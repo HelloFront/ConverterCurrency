@@ -1,0 +1,114 @@
+body {
+  background-color: #444444;
+  font-family: 'Raleway', sans-serif;
+}
+
+// -------- HEADER - START ----------
+
+header {
+  height: 70px;
+  background-color: #1a1c1e; 
+  .info {
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      li {
+        color: rgb(211, 211, 211);
+        margin: 0 50px;
+        display: flex;
+        align-items: center;
+        font-size: 25px;
+        transition: .2s linear;
+        img {
+          margin-right: 20px;
+          width: 54px;
+        }
+        .usa_icon {
+          display: block;
+          height: 68px;
+          width: 68px;
+        }
+        span {
+          margin-left: 5px;
+          font-size: 20px;
+        }
+      }
+      li:hover {
+        cursor: pointer;
+        color: rgb(255, 255, 255);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// -------- HEADER - END ----------
+
+// -------- CONVERTER - START ----------
+
+.converter {
+  margin: 0 auto;
+  width: 50%;
+  padding: 20px 0 40px;
+  margin-top: 120px;
+  background-color: #1a1c1ed3;
+  border-radius: 3px;
+  h3 {
+    margin: 0 0 50px;
+    text-align: center;
+    font-size: 35px;
+    color: #e2e2e2;
+    background-color: black;
+  }
+  .inner_block {
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    form {
+      height: 30px;
+      width: 70%;
+      display: flex;
+      justify-content: space-between;
+      input {
+        font-family: Arial, Helvetica, sans-serif;
+        outline: none;
+        height: 100%;
+        width: 80%;
+        text-indent: 8px;
+      }
+      select {
+        margin: 0;
+        padding: 0 5px;
+        height: 36px;
+        outline: none;
+        cursor: pointer;
+      }
+    }
+    .out_converter_currency {
+      margin-top: 40px;
+      width: 70%;
+      .currency_converter_item {
+        color: white;
+        margin: 10px 0;
+        input {
+          font-family: Arial, Helvetica, sans-serif;
+          margin-right: 20px;
+          height: 30px;
+          width: 80%;
+          text-indent: 8px;
+          outline: none;
+        }
+        label {
+          border-radius: 3px;
+          padding: 7px 18px;
+          background-color: #0e0c0c;
+          transition: .1s linear;
+        }
+      }
+    }
+  }
+}
