@@ -5,15 +5,16 @@ import Converter from './components/Converter/Converter';
 
 function App() {
   const [data, setData] = useState(null)
-  const time = 1500000;
+  const time = 400000;
   const storageTime = localStorage.getItem('time');
 
   (async () => {
     if (storageTime === null) {
+      const result = await getCurrencyDate();
+      localStorage.setItem('currencyData', JSON.stringify(result));
       localStorage.setItem('time', +new Date());
     } else if(+new Date() - storageTime > time) {
       const result = await getCurrencyDate()
-
       localStorage.setItem('currencyData', JSON.stringify(result));
       localStorage.setItem('time', +new Date());
     }

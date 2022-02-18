@@ -5,7 +5,7 @@ import ComponentEuro from './components/ComponentEuro';
 import MainInput from './components/MainInput';
 
 const Converter = () => {
-  const [ currentCurrency, setCurrentCurrency ] = useState('USD')
+  const [ currentCurrency, setCurrentCurrency ] = useState('UAH')
   const [ inputValue, setInputValue ] = useState('')
   const [ currentComponent, setCurrentComponent ] = useState('')
 
