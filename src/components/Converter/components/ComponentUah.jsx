@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const ComponentUah = (props) => {
-  const { inputValue, currentCurrency, setInputValue } = props;
+  const { inputValue, currentCurrency, setInputValue, currentComponent, setCurrentComponent } = props;
   const [ stateValue, setStateValue ] = useState([]);
+
   const USD_CURRENCY = JSON.parse(localStorage.getItem('currencyData'))[0].buy;
   const EURO_CURRENCY = JSON.parse(localStorage.getItem('currencyData'))[1].buy;
   const labelRef = useRef()
   let result = 0;
 
   useEffect(() => { 
-    setStateValue(inputValue)
+    if(currentComponent !== 'UAH') setStateValue(inputValue)
   }, [inputValue])
 
   useEffect(() => {     // изменение цвета при смене конвертационной валюты
@@ -19,21 +20,29 @@ const ComponentUah = (props) => {
     }, 100)
   }, [currentCurrency])
 
-  switch(currentCurrency) {   // Вычисление конвертации
-    case 'USD' : {
-      result = Math.round(stateValue * USD_CURRENCY);
-      break;
+  if(currentComponent !== 'UAH') {
+    switch(currentCurrency) {   // Вычисление конвертации
+      case 'USD' : {
+        result = (stateValue * USD_CURRENCY).toFixed(2);
+        break;
+      }
+      case 'EURO' : {
+        result = (stateValue * EURO_CURRENCY).toFixed(2);
+        break;
+      }
+      default : {
+        return result;
+      }
     }
-    case 'EURO' : {
-      result = Math.round(stateValue * EURO_CURRENCY);
-      break;
-    }
-  }
+  } else result = stateValue;
+
 
   const changeMainInputValue = (e) => {   // Изменение конвертационной валюты с другого инпута
     const value = e.target.value;
+    setCurrentComponent('UAH')
+    setStateValue(value);
 
-    if(value) {
+    if(Math.ceil(value)) {
       switch(currentCurrency) {
         case 'USD' : {
           const result = (value / USD_CURRENCY).toFixed(2);
@@ -45,6 +54,9 @@ const ComponentUah = (props) => {
           setInputValue(result);
           break;
         }
+        default : {
+          return result;
+        }
       }
     } else setInputValue(0);
   }
@@ -52,7 +64,7 @@ const ComponentUah = (props) => {
   return ( 
     <div className="currency_converter_item">
       <input 
-        value={ result ? result : '' } 
+        value={ result === '0.00' ? '' : result } 
         type="text" 
         onChange={(e) => changeMainInputValue(e)}
       />

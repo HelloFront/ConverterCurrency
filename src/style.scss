@@ -112,3 +112,31 @@ header {
     }
   }
 }
+
+
+@media screen and (max-width: 420px) {
+  header .info ul li {
+    margin: 0 5px;
+  }
+  .converter {
+    width: 85%;
+  }
+  .converter .inner_block {
+    padding: 0;
+  }
+  .converter .inner_block form {
+    width: 90%;
+  }
+  .converter .inner_block form input {
+    width: 70%;
+  }
+  .converter .inner_block .out_converter_currency {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+  .converter .inner_block .out_converter_currency .currency_converter_item input {
+    width: 65%;
+    margin: 0 10px 0 0;
+  }
+}

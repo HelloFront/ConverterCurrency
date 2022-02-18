@@ -7,6 +7,7 @@ import MainInput from './components/MainInput';
 const Converter = () => {
   const [ currentCurrency, setCurrentCurrency ] = useState('USD')
   const [ inputValue, setInputValue ] = useState('')
+  const [ currentComponent, setCurrentComponent ] = useState('')
 
   return ( 
       <div className="converter">
@@ -15,24 +16,31 @@ const Converter = () => {
           <MainInput  
             inputValue={ inputValue && inputValue }
             setCurrentCurrency={ setCurrentCurrency }
+            setCurrentComponent={ setCurrentComponent }
             setInputValue={ setInputValue }
           />
           <div className="out_converter_currency">
             {currentCurrency !== 'USD' && <ComponentUsd 
               inputValue={ inputValue }
               currentCurrency={ currentCurrency }
+              currentComponent={ currentComponent }
+              setCurrentComponent={ setCurrentComponent }
               setInputValue={ setInputValue }
             />}
             {currentCurrency !== 'EURO' && <ComponentEuro 
               inputValue={ inputValue }
               currentCurrency={ currentCurrency }
+              currentComponent={ currentComponent }
+              setCurrentComponent={ setCurrentComponent }
               setInputValue={ setInputValue }
             />}
-            <ComponentUah
+            { currentCurrency !== 'UAH'  && <ComponentUah
               inputValue={ inputValue } 
               currentCurrency={ currentCurrency }
+              currentComponent={ currentComponent }
+              setCurrentComponent={ setCurrentComponent }
               setInputValue={ setInputValue }
-            />
+            />}
           </div>
         </div>
       </div>
